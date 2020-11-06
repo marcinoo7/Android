@@ -19,6 +19,8 @@
     <string name="mass_is_empty">Mass is empty</string>
     <string name="kgCm">kg/cm</string>
     <string name="lbIn">lb/inch</string>
+    <string name="historyText">show history</string>
+    <string name="history_name">History</string>
 
     <string name="description_starvation1">
         You are in starvation category.

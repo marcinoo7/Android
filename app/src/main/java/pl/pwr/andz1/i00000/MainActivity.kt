@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     var europeanScale : Boolean = true
+    var bmiHistoryList = ArrayList<BMI_instance>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +63,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
+                R.id.history ->{
+                    openHistory()
+                    true
+                }
+
                 else -> super.onOptionsItemSelected(item)
             }
         }
@@ -82,13 +88,37 @@ class MainActivity : AppCompatActivity() {
                 bmiTV.text = bmi
                 val color = BMI.color(bmi.toDouble())
                 bmiTV.setTextColor(resources.getColor(color, resources.newTheme()))
+                addNewInstanceBMI()
             }
         }
     }
 
+    private fun addNewInstanceBMI(){
+        if(bmiHistoryList.size == 10){
+            bmiHistoryList.removeAt(0);
+        }
+        var system = getString(R.string.kgCm)
+        if(!europeanScale) system = getString(R.string.lbIn)
+        bmiHistoryList.add(
+            BMI_instance(
+                "BMI: " + bmiTV.text.toString(),
+                "Mass: " + massET.text.toString(),
+                "Height: " + heightET.text.toString(),
+                "Used system: " + system
+            )
+        )
+    }
+
+
     fun openBMI(view: View){
         val intent: Intent = Intent(this, Bmi_activity::class.java)
         intent.putExtra("bmi", bmiTV.text)
+        startActivityForResult(intent, 1)
+    }
+
+    fun openHistory(){
+        val intent: Intent = Intent(this, History_activity::class.java)
+        intent.putExtra("history_data", bmiHistoryList)
         startActivityForResult(intent, 1)
     }
 }
