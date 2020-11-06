@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="pl.pwr.andz1.i00000.MainActivity">
+    <item
+        android:id="@+id/kgCm"
+        android:orderInCategory="100"
+        android:title="@string/kgCm"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/lbIn"
+        android:orderInCategory="100"
+        android:title="@string/lbIn"
+        app:showAsAction="never" />
+</menu>
